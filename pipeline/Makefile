@@ -72,7 +72,8 @@ COMMON_DOCKER_ARGS = --rm -u `id -u ${USER}`:$(DOCKER_GRP) \
 	-v /var/run/docker.sock:/var/run/docker.sock
 
 download-seqrepo: ## Download seq repo data
-	docker run $(COMMON_DOCKER_ARGS) $(PIPELINE_IMAGE) bash -c "mkdir -p $(SEQ_REPO_DIR_DOCKER) && seqrepo --root-directory $(SEQ_REPO_DIR_DOCKER) pull && seqrepo --root-directory $(SEQ_REPO_DIR_DOCKER) update-latest"
+	#docker run $(COMMON_DOCKER_ARGS) $(PIPELINE_IMAGE) bash -c "mkdir -p $(SEQ_REPO_DIR_DOCKER) && seqrepo --root-directory $(SEQ_REPO_DIR_DOCKER) pull && seqrepo --root-directory $(SEQ_REPO_DIR_DOCKER) update-latest"
+	echo "Copy seq repo data from local"
 
 run-pipeline: ## running entire pipeline
 	TS=`date +%Y%m%d_%H%M%S`
